@@ -1,0 +1,22 @@
+{
+  "format_version": "1.26.40",
+  "minecraft:block": {
+    "description": {
+      "identifier": "dlv:vault_safe",
+      "states": {"dlv:opened": [false, true]},
+      "menu_category": {"category": "items"}
+    },
+    "components": {
+      "minecraft:geometry": "geometry.dlv.vault_safe",
+      "minecraft:material_instances": {"*": {"texture": "dlv_vault_safe_closed", "render_method": "opaque"}},
+      "minecraft:destructible_by_mining": false,
+      "minecraft:destructible_by_explosion": false,
+      "minecraft:map_color": "#363A40",
+      "minecraft:light_dampening": 15,
+      "dlv:vault_interaction": {"duration_seconds": 60, "reward": 3000, "max_distance": 3.75}
+    },
+    "permutations": [
+      {"condition": "q.block_state('dlv:opened') == true", "components": {"minecraft:material_instances": {"*": {"texture": "dlv_vault_safe_open", "render_method": "opaque"}}}}
+    ]
+  }
+}

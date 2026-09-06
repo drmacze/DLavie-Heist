@@ -1,51 +1,76 @@
 # DLavie Heist
 
-Heist gameplay module for **AG2 × DLavie Combat Survival** on Minecraft Bedrock / PE 26.45.
+Heist gameplay module for **Minecraft Bedrock / PE 26.45**.
 
-## Latest integrated build
+## Current development build
 
-**AG2 × DLavie Combat Survival V10.16 — Heist Core**
+**DLavie Heist Core v1.1**
 
-The repository currently includes the standalone Heist module extracted from the V10.16 integrated build:
+This repository now contains both editable source and the packaged `.mcaddon`.
 
-`releases/v10.16/DLavie_Heist_Core_V1.0.mcaddon`
+### Main gameplay
 
-### Heist features
+- `dlv:vault_safe` robbery block
+- `dlv:crowbar` tool
+- 60-second breach
+- 20-segment progress HUD
+- 3-phase cinematic free camera
+- custom prying animation
+- cancel on damage / distance / dimension change / crowbar removal
+- persistent `dlv_money` scoreboard
+- default reward `$3,000`
+- opened-state anti-farming
+- simultaneous-vault reservation
+- recovery from stale movement/camera locks after script reload
+- script events for Wanted / hearing integration
 
-- Custom `dlv:vault_safe` block
-- Custom `dlv:crowbar` item
-- 60-second vault breach sequence
-- 20-segment progress bar with countdown
-- Cinematic third-person/free-camera sequence with 3 camera phases
-- Repeating crowbar/prying animation
-- Breach cancellation when damaged, too far away, or crowbar is removed
-- Persistent money objective: `dlv_money`
-- Default robbery reward: **$3,000**
-- Opened vault state prevents repeat farming
-- Metal breach noise integrates with the AG2/DLavie Wanted + hearing system in the full V10.16 build
+## Source layout
 
-## Testing
+```text
+src/
+  behavior_pack/
+    blocks/vault_safe.json
+    items/crowbar.json
+    scripts/main.js
+  resource_pack/
+    animations/
+    models/
+    textures/
+tools/build_release.py
+```
+
+## Build
+
+```bash
+python tools/build_release.py
+```
+
+Output:
+
+```text
+releases/v1.1/DLavie_Heist_Core_V1.1.mcaddon
+```
+
+## Test commands
 
 ```mcfunction
 /give @s dlv:vault_safe 1
 /give @s dlv:crowbar 1
 ```
 
-Place the safe, hold the crowbar, and interact with the safe.
+Place the safe, hold the crowbar and interact with the safe.
+
+To hide the standalone money action bar when another DLavie HUD renders money:
+
+```mcfunction
+/tag @s add dlv_hide_money_hud
+```
 
 ## Compatibility
 
 - Minecraft Bedrock / PE 26.45 target
-- `@minecraft/server` 2.9.0
-- Resource Pack uses PBR capability / modern engine baseline
+- minimum engine baseline `1.26.40`
+- `@minecraft/server` `2.9.0`
+- Custom Components V2
 
-## V10.16 integrated build
-
-Full integrated build metadata:
-
-- File: `AG2_DLavie_Combat_Survival_V10_16_HEIST_CORE_ALL_IN_ONE.mcaddon`
-- Size: `12,345,216 bytes`
-- SHA-256: `8565341d58015169fa4e72a6614f2c34bae135755cec88274c3b622333d07b06`
-- Internal packs: `15`
-
-See `docs/V10_16_HEIST_CORE_VALIDATION.txt` for validation details.
+See `docs/V1_1_DEBUG_REPORT.md` for the debugging notes.
