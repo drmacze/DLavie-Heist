@@ -6,7 +6,7 @@ Heist gameplay module for **Minecraft Bedrock / PE 26.45**.
 
 **DLavie Heist Core v1.1**
 
-This repository now contains both editable source and the packaged `.mcaddon`.
+The repository now contains editable Behavior Pack / Resource Pack source plus reproducible build and validation tools. The packaged v1.1 `.mcaddon` can be generated from source with the build command below.
 
 ### Main gameplay
 
@@ -37,12 +37,14 @@ src/
     models/
     textures/
 tools/build_release.py
+tools/validate_release.py
 ```
 
 ## Build
 
 ```bash
 python tools/build_release.py
+python tools/validate_release.py
 ```
 
 Output:
