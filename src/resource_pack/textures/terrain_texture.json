@@ -1,8 +1,1 @@
-{
-  "resource_pack_name": "dlavie_heist",
-  "texture_name": "atlas.terrain",
-  "texture_data": {
-    "dlv_vault_safe_closed": {"textures": "textures/blocks/vault_safe_closed"},
-    "dlv_vault_safe_open": {"textures": "textures/blocks/vault_safe_open"}
-  }
-}
+{"resource_pack_name":"dlavie_heist","texture_name":"atlas.terrain","texture_data":{"dlv_vault_safe":{"textures":"textures/blocks/vault_safe"},"dlv_vault_safe_stage1":{"textures":"textures/blocks/vault_safe_stage1"},"dlv_vault_safe_stage2":{"textures":"textures/blocks/vault_safe_stage2"},"dlv_vault_safe_stage3":{"textures":"textures/blocks/vault_safe_stage3"}}}

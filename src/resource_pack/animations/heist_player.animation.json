@@ -1,14 +1,1 @@
-{
-  "format_version": "1.8.0",
-  "animations": {
-    "animation.dlv.heist.pry": {
-      "loop": false,
-      "animation_length": 1.2,
-      "bones": {
-        "body": {"rotation": {"0.0":[0,0,0],"0.25":[8,-8,0],"0.55":[-6,10,0],"0.9":[6,-4,0],"1.2":[0,0,0]}},
-        "rightArm": {"rotation": {"0.0":[-25,0,18],"0.25":[-82,0,42],"0.55":[-42,0,12],"0.9":[-88,0,48],"1.2":[-25,0,18]}},
-        "leftArm": {"rotation": {"0.0":[-18,0,-15],"0.25":[-65,0,-28],"0.55":[-38,0,-8],"0.9":[-72,0,-30],"1.2":[-18,0,-15]}}
-      }
-    }
-  }
-}
+{"format_version":"1.8.0","animations":{"animation.dlv.heist.pry":{"loop":false,"animation_length":1.45,"bones":{"body":{"rotation":{"0.0":[0,0,0],"0.28":[5,-4,0],"0.62":[-3,7,0],"1.0":[6,-5,0],"1.45":[0,0,0]}},"rightArm":{"rotation":{"0.0":[-34,-6,20],"0.28":[-78,-3,35],"0.62":[-48,6,17],"1.0":[-86,-4,42],"1.45":[-34,-6,20]}},"leftArm":{"rotation":{"0.0":[-26,5,-16],"0.28":[-58,3,-25],"0.62":[-39,-4,-10],"1.0":[-67,5,-30],"1.45":[-26,5,-16]}}}},"animation.dlv.crowbar.first_person":{"loop":true,"bones":{"crowbar_root":{"rotation":[6,-8,-4],"position":[0.5,-0.5,0.7],"scale":[1.0,1.0,1.0]}}},"animation.dlv.crowbar.third_person":{"loop":true,"bones":{"crowbar_root":{"rotation":[0,0,0],"position":[0,0,0],"scale":[0.92,0.92,0.92]}}}}}

@@ -1,18 +1,1 @@
-{
-  "format_version": 2,
-  "header": {
-    "name": "DLavie Heist Core BP",
-    "description": "DLavie Heist Core v1.1 - vault breach gameplay",
-    "uuid": "6f8ed30e-e08c-478a-b4d2-0c77c1161a52",
-    "version": [1, 1, 0],
-    "min_engine_version": [1, 26, 40]
-  },
-  "modules": [
-    {"type": "data", "uuid": "272b15ab-4c71-4ecf-a87f-beb99a99e334", "version": [1, 1, 0]},
-    {"type": "script", "language": "javascript", "entry": "scripts/main.js", "uuid": "6a568751-ddcb-4e3d-9f75-26e71b0c2863", "version": [1, 1, 0]}
-  ],
-  "dependencies": [
-    {"uuid": "c7dacba2-4f2d-4bf6-92a8-570618e14ae3", "version": [1, 1, 0]},
-    {"module_name": "@minecraft/server", "version": "2.9.0"}
-  ]
-}
+{"format_version":2,"header":{"name":"DLavie Heist Core BP v1.2","description":"DLavie Heist v1.2 - staged vault breach, loot and cinematic gameplay","uuid":"6f8ed30e-e08c-478a-b4d2-0c77c1161a52","version":[1,2,0],"min_engine_version":[1,26,40]},"modules":[{"type":"data","uuid":"272b15ab-4c71-4ecf-a87f-beb99a99e334","version":[1,2,0]},{"type":"script","language":"javascript","entry":"scripts/main.js","uuid":"6a568751-ddcb-4e3d-9f75-26e71b0c2863","version":[1,2,0]}],"dependencies":[{"uuid":"c7dacba2-4f2d-4bf6-92a8-570618e14ae3","version":[1,2,0]},{"module_name":"@minecraft/server","version":"2.9.0"}]}
