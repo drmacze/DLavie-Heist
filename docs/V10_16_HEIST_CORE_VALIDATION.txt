@@ -1,0 +1,50 @@
+AG2 × DLavie Combat Survival V10.16 — HEIST CORE
+
+Output: AG2_DLavie_Combat_Survival_V10_16_HEIST_CORE_ALL_IN_ONE.mcaddon
+Size: 12,345,216 bytes
+SHA256: 8565341d58015169fa4e72a6614f2c34bae135755cec88274c3b622333d07b06
+Nested packs: 15
+
+Gameplay:
+- Place dlv:vault_safe in a robbery location.
+- Hold dlv:crowbar and interact with the locked safe.
+- Player movement/camera input is locked during the 60-second breach.
+- A cinematic free camera uses 3 angles while the player performs repeated prying animations.
+- Metallic breach sounds periodically create an 18-block suspicious noise signal for the existing Wanted/hearing AI.
+- Progress is shown as a 20-segment loading bar with percentage and remaining time.
+- Taking damage, changing away from the crowbar, moving too far, or losing the safe cancels the breach.
+- On completion the safe changes to an opened/cash-filled state and awards $3,000.
+- Money persists through the dlv_money scoreboard and is shown under the tactical minimap/biome HUD.
+- Opened safes cannot be robbed again.
+
+Testing commands:
+- /give @s dlv:vault_safe 1
+- /give @s dlv:crowbar 1
+
+Validation:
+- Heist + CSO JavaScript syntax: PASS
+- New/modified JSON strict parse: PASS
+- 60-second breach: PASS
+- Crowbar required: PASS
+- Movement lock: PASS
+- Camera input lock: PASS
+- Cinematic free camera: PASS
+- Three cinematic phases: PASS
+- Prying animation: PASS
+- Progress bar: PASS
+- $3000 reward: PASS
+- Persistent scoreboard money: PASS
+- Money HUD integrated: PASS
+- Success HUD event: PASS
+- Heist noise to Wanted: PASS
+- Safe has opened state: PASS
+- Safe indestructible by mining: PASS
+- Safe indestructible by explosion: PASS
+- Safe custom component V2: PASS
+- Nested ZIP/CRC + dependency closure: PASS
+
+Runtime note:
+- Static validation proves syntax, manifests, block state setup, scoreboard logic, timing and dependency closure.
+- Exact camera framing and player bone animation blending must still be verified in Minecraft Bedrock/PE 26.45 on-device.
+
+FINAL RESULT: PASS
