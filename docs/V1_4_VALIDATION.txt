@@ -1,0 +1,30 @@
+DLavie Heist Core V1.4 Validation
+
+PASS JSON strict parse (21 files)
+PASS JS syntax main.js
+PASS JS syntax squad_loot.js
+PASS BP v1.4
+PASS RP v1.4
+PASS @minecraft/server 2.9.0
+PASS @minecraft/server-ui 2.1.0
+PASS vault front standardized rotations
+PASS front-face interaction guard
+PASS close cinematic four phases
+PASS animated final open
+PASS animated cash collection
+PASS four interactive checks
+PASS spectator mode
+PASS spawn-point reset
+PASS grave on player death
+PASS AG2 whitelist embedded (79 ids)
+PASS AG2-only loot namespaces
+PASS grave interact loot UI
+PASS grave PBR ag2_grave.png
+PASS grave PBR ag2_grave_normal.png
+PASS grave PBR ag2_grave_mer.png
+PASS grave PBR ag2_grave.texture_set.json
+PASS grave 3D geometry
+PASS expanded animation set
+PASS MCADDON CRC
+
+VALIDATION: PASS
