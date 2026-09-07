@@ -2,9 +2,9 @@
 
 This integration is developed for **Actual Guns 2: Delays Ahead** used by the DLavie Heist modpack. It is not part of the cancelled CS2-ONLINE experiment.
 
-## Current test build: V1.5 Refined TRUE ADS
+## Current test build: V1.6 ADS Fallback
 
-V1.5 builds on **V1.4 TRUE ADS / V1.3.2 Render Recovery**, keeping the proven render-safe first-person stack while adding device-tuned per-family calibration and safer motion variety.
+V1.6 builds on **V1.5 Refined TRUE ADS**, preserving the render-safe first-person stack and the per-family alignment work while simplifying weak ADS behavior around two proven on-device motion references: **MK16** and **AKM**.
 
 ### Core behavior
 
@@ -12,44 +12,39 @@ V1.5 builds on **V1.4 TRUE ADS / V1.3.2 Render Recovery**, keeping the proven re
 - Vanilla `+` crosshair stays hidden whenever an AG2 firearm is equipped.
 - Aim is intended to use the weapon's own iron sight / optic geometry.
 - Native AG2 sniper zoom remains authoritative.
-- Existing V1.1 recoil is preserved.
+- Existing V1.1 recoil and V1.5 safe idle/sprint motion are preserved.
 - The creative-mode infinite-ammo warning is limited to 5 seconds.
 
-### V1.5 device-tuned corrections
+### V1.6 fallback policy
 
-Based on on-device screenshots:
+The user confirmed that MK16 and AKM have good ADS movement on-device. Weak/static rifle ADS therefore no longer gets a newly invented transition style.
 
-- **M4A1 / M4A1-S / M16A1** receive a stronger sight-line correction: the complete first-person assembly is raised and centered further while ADS so the rear/front sight can be used as the actual aiming reference.
-- **SVI Infinity Single family** keeps its good native ADS motion, but the `infinity` weapon bone is scaled to roughly **1.22–1.25×** because the gun model appeared too small compared with the arms. This correction scales the weapon only, not the hands/player rig.
-- Garand, MP5 and AK-family calibration is refined conservatively rather than globally shifting every firearm.
-- Pistol families that already looked correct remain intentionally conservative.
+- **MK16-style fallback:** M4A1, M4A1-S, M16A1, MP5 and MR6.
+- **AKM-style fallback:** AK47, AK47R, AK60 and M1 Garand.
+- Good pistol ADS is intentionally left unchanged.
+- Strong native scope/optic families such as AWP/AWPR/M200 stay fully native.
+- AK12 and F2000 keep their stronger native animated ADS.
 
-### Safe motion architecture
+The fallback does **not** copy another weapon's raw arm/gun animation file directly because AG2 families use different weapon-bone names and raw reuse can break first-person rendering. Instead, V1.6 transfers the proven MK16/AKM bring-up timing and trajectory as a **transient BODY-only ADS entry layer** on top of each weapon's own native AG2 first-person animation and its V1.5 final sight alignment.
 
-The important safety rule remains: no new global player/root/arm animation controller.
+This keeps each weapon's hands, gun bones, reload/draw/fire animation and skin geometry authoritative while producing the same style of shoulder-to-sight movement.
 
-- Every firearm controller keeps its original AG2 ADS state and first-person ADS animation.
-- V1.5 adds a small state-scoped per-family ADS micro-sway.
-- V1.5 adds state-scoped idle/sprint movement on the `body` bone only, with different profiles for rifle, heavy rifle, SMG, pistol and sniper families.
-- Motion phase differs per controller so all weapons do not bob in exact sync.
-- Reload, draw, fire and native inspect states remain authoritative and are not replaced by the new motion layer.
-- The only non-body V1.5 correction is the SVI `infinity` weapon-bone scale fix.
+### Safety architecture
+
+- No global player/root/arm controller is added.
+- New V1.6 fallback animations touch the `body` bone only.
+- Original AG2 `root`, `leftArm`, `rightArm`, magazine and weapon-specific bones remain owned by the native weapon animation.
+- V1.5 final per-family iron-sight alignment remains underneath the transient V1.6 entry animation.
+- The V1.6 layer settles to zero at the end, so it cannot continuously push the weapon away from its calibrated ADS point.
 
 ### Coverage
 
-- 53 integrated AG2 firearm item IDs remain in the all-in-one Delays Ahead build.
-- 33 firearm controller families preserve native ADS.
-- 33/33 receive V1.5 per-family ADS calibration/micro-sway.
-- 33/33 receive safe state-scoped idle/sprint motion.
-- Native scope/optic behavior remains authoritative for AWP/AWPR/M200.
-
-### ADS FOV
-
-- rifle: 64
-- pistol: 69
-- SMG: 66
-- sniper: native AG2 zoom
+- 53 integrated AG2 firearm IDs remain in the all-in-one Delays Ahead build.
+- 9 weak/static rifle-family controllers receive V1.6 fallback entry motion.
+- 5 receive MK16-style timing.
+- 4 receive AKM-style timing.
+- Pistol families and native optic/sniper families are not replaced.
 
 ## Runtime testing priority
 
-Exact iron-sight alignment remains visual. Prioritize M4A1/M4A1-S/M16A1 and SVI Infinity Single variants in V1.5, then inspect Garand, MP5, AK-family and remaining rifles. Any remaining misalignment should be tuned per weapon family only; do not modify the global first-person rig.
+Prioritize M4A1/M4A1-S/M16A1 first, then MP5/MR6, AK47/AK47R/AK60 and M1 Garand. Exact final iron-sight alignment remains device-visual; fallback motion should be tuned only per family and must not modify the global first-person rig.
