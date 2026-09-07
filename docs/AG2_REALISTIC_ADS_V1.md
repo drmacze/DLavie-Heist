@@ -1,38 +1,46 @@
-# Actual Guns 2 × DLavie Realistic ADS V1
+# Actual Guns 2 × DLavie TRUE ADS
 
-This integration is developed for the Actual Guns 2 build used by the DLavie Heist full modpack.
+This integration is developed for **Actual Guns 2: Delays Ahead** used by the DLavie Heist modpack. It is not part of the cancelled CS2-ONLINE experiment.
 
-## Behavior
+## Current test build: V1.4 TRUE ADS
 
-- Crouch/sneak enters ADS for firearm classes.
-- Vanilla `+` crosshair is hidden whenever an AG2 firearm is equipped.
-- Aim is performed with the weapon's iron sight / optic model.
-- Native AG2 sniper zoom is preserved rather than replaced by the generic FOV controller.
-- Procedural first-person weapon sway gives hip-fire more movement and ADS a smaller breathing sway.
-- Firing controllers receive deterministic rotational camera kick with class-specific strength and per-controller variance.
+V1.4 is rebuilt from the **V1.3.2 Render Recovery / proven V1.1 first-person baseline**, because that baseline is confirmed on-device to keep hands and weapons visible.
 
-## V1 coverage
+### Core behavior
 
-- 208 AG2 firearm items tagged for the ADS runtime.
-- 335 firing states patched across 156 firing-controller files.
-- Classes: rifles, pistols, SMGs, snipers, shotguns, heavy and equipment firearms.
+- Crouch/sneak enters ADS.
+- Vanilla `+` crosshair stays hidden whenever an AG2 firearm is equipped.
+- Aim is intended to use the weapon's own iron sight / optic geometry.
+- Native AG2 sniper zoom remains authoritative.
+- Existing V1.1 recoil and restrained weapon sway are preserved.
+- The creative-mode infinite-ammo warning is limited to 5 seconds.
 
-Generic ADS FOV targets:
+### V1.4 iron-sight calibration architecture
 
-- pistol: 76
-- SMG: 73
-- rifle: 70
-- shotgun: 72
-- heavy: 68
-- equipment: 66
+The important safety rule is that V1.4 does **not** replace the global player/root/arm animation stack.
+
+- Every firearm controller keeps its original AG2 ADS state and original first-person ADS animation.
+- Weak/off-center ADS families receive a second, state-scoped calibration animation.
+- Calibration animations touch the `body` bone only, moving the complete first-person assembly together.
+- They never directly override `root`, `rightArm`, `leftArm`, or individual gun bones, avoiding the hand/weapon disappearance regression seen in experimental V1.2/V1.3 motion builds.
+- Strong native ADS/scope families are preserved with little or no correction.
+
+### Coverage
+
+- 53 integrated AG2 firearm item IDs remain in the all-in-one Delays Ahead build.
+- 33 firearm controller families retain a native ADS state.
+- 28 controller families receive state-scoped calibration overlays.
+- Native scope/optic behavior is preserved for AWP/AWPR/M200 and other already-strong scope families.
+
+### Refined generic ADS FOV
+
+- rifle: 64
+- pistol: 69
+- SMG: 66
 - sniper: native AG2 zoom
 
-## Important runtime note
+The lower FOV values make aligned iron sights easier to read without bringing back the vanilla crosshair.
 
-The current `gyro-style` behavior means procedural inertial viewmodel sway plus camera recoil. Bedrock add-ons do not expose the iPhone's physical gyroscope sensor to Molang weapon animations.
+## Runtime testing priority
 
-Per-model X/Y/Z ADS calibration is the next tuning stage: the universal controller works across the gun set, but individual iron sights can require alignment offsets because AG2 weapon geometries differ.
-
-## Build provenance
-
-V1 was generated from the same Actual Guns 2/full DLavie V10.22 input used by the Heist modpack. It is not a CS2-ONLINE feature. Future revisions belong to this repository/project.
+Exact sight alignment is ultimately visual and should be verified on-device. First validate M4A1/M4A1S/M16A1, AK47/AKM, MP5, Desert Eagle variants, then the remaining firearm families. If a specific sight is slightly high/low/left/right, tune that family only rather than modifying the global first-person rig.
