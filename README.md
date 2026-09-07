@@ -2,6 +2,20 @@
 
 Heist gameplay module for **AG2 × DLavie Combat Survival** on Minecraft Bedrock / PE 26.45.
 
+## Current AG2 base
+
+**Actual Guns 2: Delays Ahead × DLavie Definitive V2.5**
+
+- Version: `2.5.0`
+- Source file: `AG2_Delays_Ahead_DLavie_DEFINITIVE_V2.5_DEFINITIVE_VOXEL_BACKPACK_STABLE_UUID.mcaddon`
+- Size: `16,700,061 bytes`
+- SHA-256: `30a546286219323bba03d9585dcfe72ec9381aaa38ff131352b00d51173db65f`
+- Package: Behavior Pack + Resource Pack
+- BP UUID: `dd5dac7a-678f-4a27-a2fd-0decdc708327`
+- RP UUID: `fc3c92f2-b40c-40a3-ad0f-fe0e4cfd6415`
+
+This is the current AG2 base selected for the next integrated DLavie Heist build. The downloadable binary in this repository remains the standalone Heist Core until the full AG2 binary is published.
+
 ## Latest integrated build
 
 **AG2 × DLavie Combat Survival V10.16 — Heist Core**
